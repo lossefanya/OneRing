@@ -43,6 +43,12 @@ namespace OneRing.Items
 			{
 				player.AddBuff(i, 2, true);
 			}
+			Mod calamity = ModLoader.GetMod("CalamityMod");
+			if (calamity != null)
+			{
+				ModBuff ceaselessHunger = calamity.GetBuff("CeaselessHunger");
+				player.AddBuff(ceaselessHunger.Type, 2, true);
+			}
 			if (hideVisual)
 			{
 				player.longInvince = true;
@@ -50,13 +56,12 @@ namespace OneRing.Items
 				player.endurance += 0.99f;
 				player.statLifeMax2 += 500;
 				player.statDefense += 9999;
-				Mod calamity = ModLoader.GetMod("CalamityMod");
 				if (calamity != null)
 				{
 					ModBuff abyssalFlames = calamity.GetBuff("AbyssalFlames");
 					ModBuff vulnerabilityHex = calamity.GetBuff("VulnerabilityHex");
-					// player.buffImmune[abyssalFlames.get_Type()] = true;
-					// player.buffImmune[vulnerabilityHex.get_Type()] = true;
+					player.buffImmune[abyssalFlames.Type] = true;
+					player.buffImmune[vulnerabilityHex.Type] = true;
 				}
 			}
 		}
