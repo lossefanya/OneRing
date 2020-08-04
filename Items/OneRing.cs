@@ -58,6 +58,8 @@ namespace OneRing.Items
 				player.statDefense += 9999;
 				if (calamity != null)
 				{
+					ModBuff zen = calamity.GetBuff("Zen");
+					player.AddBuff(zen.Type, 2, true);
 					ModBuff abyssalFlames = calamity.GetBuff("AbyssalFlames");
 					ModBuff vulnerabilityHex = calamity.GetBuff("VulnerabilityHex");
 					player.buffImmune[abyssalFlames.Type] = true;
